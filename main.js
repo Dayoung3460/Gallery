@@ -1,19 +1,38 @@
+'use strict'
 
 
+
+const toggleBtn = document.querySelector('.sidebar-toggle');
+const sidebar = document.querySelector('.sidebar');
 const hightlight = document.querySelector(".highlight");
 const previews = document.querySelectorAll(".preview img");
 const colors = ["antiquewhite", "blueviolet", "paleVioletRed", "INDIANRED", "TOMATO", "DARKKHAKI", "MEDIUMPURPLE"];
-const btn = document.querySelector('.btn')
+const colorChangedbtn = document.querySelector('.colorChangedbtn')
 const colorName = document.querySelector('.colorName');
 const descriptionContainer = document.querySelector('.description');
 
-btn.addEventListener('click', changeBackColor);
+onClickToggleBtn();
+backgroundColorChanged();
 imageGallery();
+loadReviews()
 
-function changeBackColor(){
-    const randomNumber = getRandomNumber();
-    descriptionContainer.style.backgroundColor = colors[randomNumber];
-    colorName.textContent = colors[randomNumber];
+
+function backgroundColorChanged(){
+    if(colorChangedbtn){
+        colorChangedbtn.addEventListener('click', () => {
+            const randomNumber = getRandomNumber();
+            descriptionContainer.style.backgroundColor = colors[randomNumber];
+            colorName.textContent = colors[randomNumber];
+        });
+    }
+}
+
+function onClickToggleBtn(){
+    if(toggleBtn){
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show-sidebar')
+        })
+    }
 }
 
 function getRandomNumber(){
@@ -33,3 +52,8 @@ function imageGallery(){
     });
 }
 
+function loadReviews(){
+    return fetch('data/review.json')
+    .then(response => response.json()) 
+    .then(json => json.reviews); 
+}
