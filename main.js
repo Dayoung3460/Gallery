@@ -1,7 +1,5 @@
 'use strict'
-
-
-
+//////////////////////////// home ////////////////////////////////
 const toggleBtn = document.querySelector('.sidebar-toggle');
 const sidebar = document.querySelector('.sidebar');
 const hightlight = document.querySelector(".highlight");
@@ -123,14 +121,16 @@ loadReviews()
 
 // ////////////////////////////faq page////////////////////////////////
 
+
 const dropDownBtns = document.querySelectorAll('.title button');
-const faqCardHrs = document.querySelectorAll('.faqCard hr');
-const faqCardPs = document.querySelectorAll('.faqCard p');
 
 dropDownBtns.forEach((dropDownBtn) => {
     dropDownBtn.addEventListener('click', (e) => {
         const question = e.currentTarget.parentElement.parentElement;
-        question.children[1].classList.toggle = 'show-hr';
-        question.children[2].classList.toggle = 'show-p';
+        
+        question.children[1].classList.toggle('show-hr');
+        question.children[2].classList.toggle("show-p");
     })
 })
+
+

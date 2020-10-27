@@ -295,7 +295,7 @@ a {
 .review-container .review {
   position: relative;
   width: 50%;
-  height: 50%;
+  height: 60%;
   background-color: #fff;
   padding: 1.5rem 1rem 1rem 1rem;
   border-radius: 0.6rem;
@@ -435,6 +435,19 @@ a {
   width: 50%;
   overflow-y: auto;
   margin-bottom: 3rem;
+  animation: faqSection-loaded .5s linear;
+}
+
+@keyframes faqSection-loaded{
+  0% {
+    transform: rotatex(50deg);
+  }
+  50%{
+    transform: rotatex(25deg);
+  }
+  100% {
+    transform: rotatex(0deg);
+  }
 }
 
 ::-webkit-scrollbar {
@@ -456,10 +469,13 @@ a {
 }
 
 .faqCard{
-  width: 100%;
+  width: 95%;
   background-color: var(--clr-grey-2);
   padding: 1rem;
   margin: 1rem 0;
+  border-radius: .5rem;
+  box-shadow: .3rem .3rem var(--clr-grey-3);
+  transition: all .2s linear;
 }
 
 .faqCard .title{
@@ -468,8 +484,14 @@ a {
   justify-content: space-between
 }
 
-hr{
+.faqCard hr{
   margin: 1rem 0;
+  display: none;
+}
+
+.faqCard p {
+  display: none;
+  color: var(--clr-grey-9);
 }
 
 .title h3 i {
@@ -481,21 +503,21 @@ hr{
   background-color: transparent;
   border: none;
   outline: none;
-  margin-right: 1rem;
+  margin: 0 1rem;
   cursor: pointer;
 }
 
 .title button i {
   color: var(--clr-blue);
-  font-size: 1rem;
+  font-size: 1.5rem;
+  transition: all .3s linear;
 }
 
-/* .faqCard hr,
-.faqCard p {
-  display: none;
+.title button i:hover{
+  transform: rotate(-30deg);
 }
 
-.faqCard show-hr,
-.faqCard show-p {
+.faqCard .show-hr,
+.faqCard .show-p {
   display: block;
-} */
+}
