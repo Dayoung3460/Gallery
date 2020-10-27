@@ -1,25 +1,26 @@
 @media only screen and (max-width: 768px) {
-  .sidebar {
-    width: 30%;
-  }
-
   .sidebar-header {
-    margin-top: 3rem;
+    margin-top: 4rem;
   }
 
   .logo {
-    padding: 1rem 1.5rem 0 1.5rem;
+    padding: 0rem 3rem 0 1.5rem;
   }
 
   .review-container .review {
     height: 60%;
   }
+
+  .review .img-container::after {
+    left: 20%;
+  }
+
+  .faqSection{
+    width: 80%;
+  }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 900px) {
-  .sidebar {
-    width: 25%;
-  }
   .logo {
     width: 6rem;
     padding-left: 1.5rem;
@@ -27,6 +28,14 @@
 
   .review-container .review {
     height: 60%;
+  }
+
+  .review .img-container::after {
+    left: 25%;
+  }
+
+  .faqSection{
+    width: 70%;
   }
 }
 
@@ -38,10 +47,26 @@
   .review-container .review {
     height: 55%;
   }
+
+  .review .img-container::after {
+    left: 30%;
+  }
+
+  .faqSection{
+    width: 70%;
+  }
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
   .logo {
     width: 7.5rem;
+  }
+
+  .review .img-container::after {
+    left: 35%;
+  }
+
+  .faqSection{
+    width: 60%;
   }
 }
