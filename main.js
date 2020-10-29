@@ -1,5 +1,6 @@
 'use strict'
 //////////////////////////// home ////////////////////////////////
+
 const toggleBtn = document.querySelector('.sidebar-toggle');
 const sidebar = document.querySelector('.sidebar');
 const hightlight = document.querySelector(".highlight");
@@ -58,6 +59,83 @@ function imageGallery(){
         });
     });
 }
+
+const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  const weekdays = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
+
+const promoDesc = document.querySelector('.promoDesc');
+const countDown = document.querySelector('.countDown');
+const countNums = document.querySelectorAll('.deadline-format h4');
+
+let futureDate = new Date(2020, 10, 30, 23, 59, 0);
+
+const year = futureDate.getFullYear();
+const date = futureDate.getDate();
+const hours = futureDate.getHours();
+const minutes = futureDate.getMinutes();
+
+let month = futureDate.getMonth();
+month = months[month];
+let weekday = futureDate.getDay();
+weekday = weekdays[weekday];
+
+if(promoDesc){
+    promoDesc.textContent = `
+    promotion ends on ${weekday}, ${date} ${month} ${year} ${hours}:${minutes}pm
+  `;
+}
+
+const futureTime = futureDate.getTime();
+
+function getRemainingTime(){
+    const today = new Date().getTime();
+    const time = futureTime - today;
+    // 1s = 1000ms
+    // 1m = 60s
+    // 1hr = 60m
+    // 1d = 24hr
+    const oneDay = 24 * 60 * 60 * 1000;
+    const oneHour = 60 * 60 * 1000;
+    const oneMinutes = 60 * 1000; 
+
+    let days = time/oneDay;
+    days = Math.floor(days);
+    let hours = (time % oneDay) / oneHour;
+    hours = Math.floor(hours);
+    let mins = (time % oneHour) / oneMinutes;
+    mins = Math.floor(mins);
+    let secs = (time % oneMinutes) / 1000;
+    secs = Math.floor(secs);
+
+    const values = [days, hours, mins, secs];
+    countNums.forEach((countNum, index) => {
+        countNum.innerHTML = values[index];
+    });
+
+}
+
+getRemainingTime();
 
 // ////////////////////////////review page////////////////////////////////
 
@@ -132,5 +210,38 @@ dropDownBtns.forEach((dropDownBtn) => {
         question.children[2].classList.toggle("show-p");
     })
 })
+
+//////////////////////////// about ////////////////////////////////
+
+const descCon = document.querySelector('.desc');
+const tabBtns = document.querySelectorAll('.tabDiv button');
+const aboutContents = document.querySelectorAll('.para .content');
+
+if(descCon) {
+    descCon.addEventListener('click', (e) => {
+        const id = e.target.dataset.id;
+    
+        if(id) {
+            tabBtns.forEach(tabBtn => {
+                tabBtn.classList.remove('active');
+                e.target.classList.add('active');
+            })
+            aboutContents.forEach(aboutContent => {
+                aboutContent.classList.remove('active');
+            })
+            const elemContent = document.getElementById(id);
+            elemContent.classList.add('active');
+        }
+    })
+    
+}
+
+const preloader = document.querySelector('.preloader');
+
+if(preloader){
+    window.addEventListener('load', () => {
+        preloader.classList.add('hide-preloader');
+    })
+}
 
 
