@@ -10,10 +10,6 @@ const colorChangedbtn = document.querySelector('.colorChangedbtn')
 const colorName = document.querySelector('.colorName');
 const descriptionContainer = document.querySelector('.description');
 
-onClickToggleBtn();
-backgroundColorChanged();
-imageGallery();
-
 window.addEventListener('load', () => {
     let backColor = localStorage.getItem('backColor');
     if(descriptionContainer){
@@ -60,6 +56,10 @@ function imageGallery(){
     });
 }
 
+onClickToggleBtn();
+backgroundColorChanged();
+imageGallery();
+
 const months = [
     'January',
     'February',
@@ -85,7 +85,7 @@ const months = [
   ];
 
 const promoDesc = document.querySelector('.promoDesc');
-const countDown = document.querySelector('.countDown');
+const deadline = document.querySelector('.countDown');
 const countNums = document.querySelectorAll('.deadline-format h4');
 
 let futureDate = new Date(2020, 10, 30, 23, 59, 0);
@@ -129,11 +129,27 @@ function getRemainingTime(){
     secs = Math.floor(secs);
 
     const values = [days, hours, mins, secs];
+
+    function format(countNum) {
+        if(countNum < 10) {
+            return countNum = `0${countNum}`;
+        }
+        return countNum;
+    }
+
     countNums.forEach((countNum, index) => {
-        countNum.innerHTML = values[index];
+        countNum.textContent = format(values[index]);
     });
 
+    if(time < 0) {
+        clearInterval(countdown);
+        deadline.innerHTML = `
+            <h4 class='expired'>Sorry, this promotion has expired.</h4>
+        `;
+    }
 }
+
+let countdown = setInterval(getRemainingTime, 1000);
 
 getRemainingTime();
 
