@@ -47,7 +47,7 @@ function imageGallery(){
     previews.forEach(preview => {
         preview.addEventListener('click', function() {
             const previewSrc = preview.src;
-            const mainSrc = previewSrc.replace('s', 'b');
+            const mainSrc = previewSrc.replace('_s', '_b');
             previews.forEach(preview => preview.classList.remove('active'));
             hightlight.src = mainSrc;
             preview.classList.add('active');
