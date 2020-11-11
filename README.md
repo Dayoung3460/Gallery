@@ -1,4 +1,4 @@
-# Hotel_website
+# Hotel ebsite
 
 #### 🏘 Home_page
 <img src="img/screenshot/screenshot_home.png" width="500" height="233">
