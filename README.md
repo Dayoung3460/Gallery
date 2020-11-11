@@ -4,13 +4,13 @@
 <img src="img/screenshot/screenshot_home.png" width="500" height="233">
 
 
-#### 🏘 About_page
+#### 🎀 About_page
 <img src="img/screenshot/screenshot_about.png" width="500" height="233">
 
 
-#### 🏘 Review_page
+#### 👩 Review_page
 <img src="img/screenshot/screenshot_review.png" width="500" height="233">
 
 
-#### 🏘 FAQ_page
+#### 🧙‍♀️ FAQ_page
 <img src="img/screenshot/screenshot_faq.png" width="500" height="233">
